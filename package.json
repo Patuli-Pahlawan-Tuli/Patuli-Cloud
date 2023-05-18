@@ -10,11 +10,14 @@
   "license": "ISC",
   "dependencies": {
     "@hapi/hapi": "^21.3.2",
+    "aguid": "^2.0.0",
     "bcrypt": "^5.1.0",
     "hapi-auth-jwt2": "^10.4.0",
     "hapi-login": "^1.2.2",
     "hapi-register": "^1.1.0",
-    "joi": "^17.9.2"
+    "http-status": "^1.6.2",
+    "joi": "^17.9.2",
+    "mongoose": "^7.1.1"
   },
   "devDependencies": {
     "eslint": "^8.40.0",
