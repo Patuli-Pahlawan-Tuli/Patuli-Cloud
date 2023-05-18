@@ -15,6 +15,7 @@ const getUser = async (req, res) => {
   res.json(response);
 };
 
+
 const updateUser = async (req, res) => {
   try {    
     const userId = req.currentUser._id;
