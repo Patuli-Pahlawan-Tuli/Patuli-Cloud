@@ -1,5 +1,5 @@
-const hapi = require("hapi");
-const router = new hapi.Router();
+const express = require("express");
+const router = new express.Router();
 const authHandler = require("../handler/authHandler");
 
 router.post("/register", authHandler.register);

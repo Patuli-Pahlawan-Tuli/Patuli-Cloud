@@ -4,7 +4,7 @@ const Auth = require("../middleware/Auth");
 const AccountHandler = require("../handler/accountHandler");
 
 router.use(Auth);
-router.get("/profile", AccountHandler.getUser);
+router.get("/profile", AccountHandler.getAccount);
 
 // profile image route
 // router.post("/profile/images", userController.updateUser);

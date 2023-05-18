@@ -1,7 +1,7 @@
 const httpStatus = require("http-status");
 const jwt = require("jsonwebtoken");
 const Response = require("../model/response");
-const User = require("../model/User");
+const Account = require("../model/account");
 const accountValidator = require("../utils/accountValidator");
 const loginValidator = require("../utils/loginValidator");
 const bcrypt = require("../utils/bcrypt");
@@ -11,8 +11,8 @@ const register = async (req, res) => {
   try {
     const request = await accountValidator.validateAsync(req.body);
 
-    const users = await User.findOne({ email: request.email });
-    if (users) {
+    const accounts = await Account.findOne({ email: request.email });
+    if (accounts) {
       response = new Response.Error(true, "Email already exist");
       res.status(httpStatus.BAD_REQUEST).json(response);
       return;
@@ -21,9 +21,9 @@ const register = async (req, res) => {
     const hashedPassword = await bcrypt.hash(request.password);
     request.password = hashedPassword;
 
-    const user = new User(request);
-    // user.imageUrl = "https://storage.googleapis.com/";
-    const result = await user.save();
+    const account = new Account(request);
+    // account.imageUrl = "https://storage.googleapis.com/";
+    const result = await account.save();
     response = new Response.Success(false, null, result);
     res.status(httpStatus.OK).json(response);
   } catch (error) {
@@ -38,8 +38,8 @@ const login = async (req, res) => {
   try {
     const request = await loginValidator.validateAsync(req.body);
 
-    const user = await User.findOne({ email: request.email });
-    if (!user) {
+    const account = await Account.findOne({ email: request.email });
+    if (!account) {
       response = new Response.Error(true, loginErrorMessage);
       res.status(httpStatus.BAD_REQUEST).json(response);
       return;
@@ -47,7 +47,7 @@ const login = async (req, res) => {
 
     const isValidPassword = await bcrypt.compare(
       request.password,
-      user.password
+      account.password
     );
     if (!isValidPassword) {
       response = new Response.Error(true, loginErrorMessage);
@@ -55,7 +55,7 @@ const login = async (req, res) => {
       return;
     }
 
-    const createJwtToken = jwt.sign({ id: user._id }, process.env.KEY);
+    const createJwtToken = jwt.sign({ id: account._id }, process.env.KEY);
     const data = { token: createJwtToken };
     response = new Response.Success(false, null, data);
     res.status(httpStatus.OK).json(response);

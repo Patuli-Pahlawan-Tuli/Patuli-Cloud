@@ -1,16 +1,32 @@
-const Hapi = require('@hapi/hapi');
-const routes = require('./routes/authRoutes');
+const express = require("express");
+const dotenv = require("dotenv");
 
-const init = async () => {
-  const server = Hapi.server({
-    port: 5000,
-    host: 'localhost',
-  });
+const app = express();
 
-  server.route(routes);
+// ENDPOINT
+const authRoutes = require("./routes/authRoutes");
+const accountRoutes = require("./routes/accountRoutes");
 
-  await server.start();
-  console.log(`Server berjalan pada ${server.info.uri}`);
-};
+// Database & Env
+dotenv.config();
+require("./database/mongodb");
 
-init();
+// PORT AND PATH
+const PORT = process.env.PORT || 8080;
+const VERSION_API = "/api/v1";
+const appendUrl = (url) => `${VERSION_API}${url}`;
+
+// MIDDLEWARE
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+
+// ROUTER
+app.use(appendUrl("/auth"), authRoutes);
+app.use(appendUrl("/account"), accountRoutes);
+
+// ENDPOINT NOT CREATED
+app.use("/", pageNotFound);
+
+app.listen(PORT, () =>
+  console.log(`Listening on port http://localhost:${PORT}`)
+);
