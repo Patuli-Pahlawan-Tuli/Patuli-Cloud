@@ -11,7 +11,10 @@
         "ecmaVersion": "latest"
     },
     "rules": {
-        "no-console": "off"
-    },
-    "import/no-extraneous-dependencies": ["error", {"devDependencies": true}]
+        "no-console": "off",
+        "max-classes-per-file": "off",
+        "no-underscore-dangle": "off",
+        "arrow-body-style": "off",
+        "no-shadow": "off"
+    }
 }

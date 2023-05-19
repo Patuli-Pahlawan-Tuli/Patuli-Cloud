@@ -1,28 +1,29 @@
-const response = require('../model/response');
-const Account = require('../model/account');
-// const UserImages = require("../model/UserImages");
+/* eslint-disable max-len */
 const httpStatus = require('http-status');
+const Response = require('../model/Response');
+const Account = require('../model/Account');
+// const UserImages = require("../model/UserImages");
 // const processFile = require("../middleware/uploadFile");
-const { format } = require('util');
+// const { format } = require('util');
 
 // const {Storage} = require('@google-cloud/storage');
 // const storage = new Storage({ keyFilename: "env.json" });
 // const bucket = storage.bucket("inacure-storage");
 
 const getAccount = async (req, res) => {
-  const account = req.currentAccount;
-  const response = new Response.Success(false, null, user);
+  const account = req.currentUser;
+  const response = new Response.Success(false, null, account);
   res.json(response);
 };
 
-
 const updateAccount = async (req, res) => {
-  try {    
-    const accountId = req.currentAccount._id;
-    const accountEmail = req.currentAccount.email;
+  try {
+    const accountId = req.currentUser._id;
+    const accountEmail = req.currentUser.email;
+    // const accountPassword = req.currentUser.password;
 
-    await processFile(req, res);
-    
+    // await processFile(req, res);
+
     // if (!req.file) {
     //   const response = new Response.Error(400, "Please upload a image!" );
     //   return res.status(httpStatus.BAD_REQUEST).json(response);
@@ -51,11 +52,12 @@ const updateAccount = async (req, res) => {
     // });
 
     // const uploadUrl = `https://storage.googleapis.com/${bucket.name}/${blob.name.toLowerCase().split(" ").join("-")}`;
-    
+
     const upload = new Account({
-        accountId: accountId,
-        email: accountEmail,
-        // imageUrl: uploadUrl,
+      accountId,
+      email: accountEmail,
+      // password: accountPassword
+      // imageUrl: uploadUrl,
     });
     const uploadSave = await upload.save();
 

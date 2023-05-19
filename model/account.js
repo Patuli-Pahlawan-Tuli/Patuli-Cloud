@@ -16,7 +16,7 @@ const userSchema = new mongoose.Schema({
   password: {
     type: String,
     minlength: 8,
-    maxlength: 20,
+    maxlength: 256,
   },
 
   // imageUrl: {
@@ -30,6 +30,6 @@ const userSchema = new mongoose.Schema({
   },
 });
 
-const account = mongoose.model('User', userSchema);
+const Account = mongoose.model('User', userSchema);
 
-module.exports = account;
+module.exports = Account;
