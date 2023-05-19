@@ -6,13 +6,13 @@
 - response:
 > {
     "error": false,
-    "message": null,
+    "message": "Account Created",
     "data": {
-        "name": "Vallianzz",
-        "email": "vaa@gmail.com",
-        "password": "$2b$12$Y44A0TgSpaRU6PQyCDzZkuTpsggQHo7Ew0.C4yMvz/pncFoZZkXAC",
-        "_id": "646724db63cd4270d4225735",
-        "createdAt": "1684481244003",
+        "name": "Vallianzx",
+        "email": "vaa1@gmail.com",
+        "password": "$2b$12$OVZdQkeRhdCV2dC1x75.6eyij59LWjlPH5JJIakXj32EYe/sbPmMG",
+        "_id": "6467291bcc9136a4fa8866ef",
+        "createdAt": "1684482331288",
         "__v": 0
     }
 }
@@ -23,9 +23,9 @@
 - response:
 > {
     "error": false,
-    "message": null,
+    "message": "success",
     "data": {
-        "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0NjcxYmMxODY0ZjQwMmQ5MTE2ODcxNyIsImlhdCI6MTY4NDQ4MTMyN30.VAfmDMSAcpll9ibCFq6tVlWweFYhUWJ2oEj3Ep5X5KI"
+        "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0NjcyOTFiY2M5MTM2YTRmYTg4NjZlZiIsImlhdCI6MTY4NDQ4MjU0M30.CodjUDEPqylNTzxENI52K8nSVyu884fNqrhDIVxIIXA"
     }
 }
 
@@ -35,13 +35,13 @@
 - response
 > {
     "error": false,
-    "message": null,
+    "message": "success",
     "data": {
-        "_id": "64671bc1864f402d91168717",
-        "name": "test",
-        "email": "test123@gmail.com",
-        "password": "$2b$12$h9OS1LIgGZ5.8anZiL0Vb.yMvg2frFytHCOKF8vQOcbLj1T9j5zzG",
-        "createdAt": "1684478913215",
+        "_id": "6467291bcc9136a4fa8866ef",
+        "name": "Vallianzx",
+        "email": "vaa1@gmail.com",
+        "password": "$2b$12$OVZdQkeRhdCV2dC1x75.6eyij59LWjlPH5JJIakXj32EYe/sbPmMG",
+        "createdAt": "1684482331288",
         "__v": 0
     }
 }
