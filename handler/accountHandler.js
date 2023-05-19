@@ -12,7 +12,7 @@ const Account = require('../model/Account');
 
 const getAccount = async (req, res) => {
   const account = req.currentUser;
-  const response = new Response.Success(false, null, account);
+  const response = new Response.Success(false, 'success', account);
   res.json(response);
 };
 
