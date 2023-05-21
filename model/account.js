@@ -19,10 +19,10 @@ const userSchema = new mongoose.Schema({
     maxlength: 256,
   },
 
-  // imageUrl: {
-  //   type: String,
-  //   required: true,
-  // },
+  imageUrl: {
+    type: String,
+    required: true,
+  },
 
   createdAt: {
     type: String,

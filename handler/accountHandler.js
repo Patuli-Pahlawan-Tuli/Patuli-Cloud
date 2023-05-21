@@ -2,18 +2,81 @@
 const httpStatus = require('http-status');
 const Response = require('../model/Response');
 const Account = require('../model/Account');
+const accountPassValidator = require('../utils/accountPassValidator');
+const bcrypt = require('../utils/bcrypt');
 // const UserImages = require("../model/UserImages");
 // const processFile = require("../middleware/uploadFile");
 // const { format } = require('util');
 
 // const {Storage} = require('@google-cloud/storage');
 // const storage = new Storage({ keyFilename: "env.json" });
-// const bucket = storage.bucket("inacure-storage");
+// const bucket = storage.bucket("");
 
 const getAccount = async (req, res) => {
   const account = req.currentUser;
   const response = new Response.Success(false, 'success', account);
   res.json(response);
+};
+
+const updatePassword = async (req, res) => {
+  let response = null;
+
+  try {
+    const accountId = req.currentUser._id;
+    // const accountName = req.currentUser.name;
+    // const accountEmail = req.currentUser.email;
+    const accountPassword = req.currentUser.password;
+
+    const request = await accountPassValidator.validateAsync(req.body);
+
+    const bodyAccountPassword = request.oldPassword;
+
+    const isValidPassword = await bcrypt.compare(bodyAccountPassword, accountPassword);
+
+    if (!isValidPassword) {
+      response = new Response.Error(true, 'Old password does not matched');
+      res.status(httpStatus.BAD_REQUEST).json(response);
+    }
+
+    const hashedPassword = await bcrypt.hash(request.newPassword);
+    await Account.findByIdAndUpdate(accountId, { password: hashedPassword });
+
+    response = new Response.Success(false, 'Password edited successfully');
+    res.status(httpStatus.OK).json(response);
+
+    // if (bcrypt.compare(bodyAccountPassword, accountPassword)) {
+    //   const hashedPassword = await bcrypt.hash(request.newPassword);
+
+    //   // await Account.updateOne(
+    //   //   {
+    //   //     _id: accountId,
+    //   //   },
+    //   //   {
+    //   //     name: accountName,
+    //   //   },
+    //   //   {
+    //   //     email: accountEmail,
+    //   //   },
+    //   //   {
+    //   //     $set: { password: hashedPassword },
+    //   //   },
+    //   //   {
+    //   //     upsert: true,
+    //   //   },
+    //   // );
+
+    //   await Account.findByIdAndUpdate(accountId, { password: hashedPassword });
+
+    //   response = new Response.Success(false, 'Password edited successfully');
+    //   res.status(httpStatus.OK).json(response);
+    // } else {
+    //   response = new Response.Error(true, 'Old password does not matched');
+    //   res.status(httpStatus.BAD_REQUEST).json(response);
+    // }
+  } catch (error) {
+    response = new Response.Error(true, error.message);
+    res.status(httpStatus.BAD_REQUEST).json(response);
+  }
 };
 
 const updateAccount = async (req, res) => {
@@ -75,4 +138,4 @@ const updateAccount = async (req, res) => {
   }
 };
 
-module.exports = { getAccount, updateAccount };
+module.exports = { getAccount, updateAccount, updatePassword };
