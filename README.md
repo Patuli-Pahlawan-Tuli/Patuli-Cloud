@@ -8,11 +8,12 @@
     "error": false,
     "message": "Account Created",
     "data": {
-        "name": "Vallianzx",
-        "email": "vaa1@gmail.com",
-        "password": "$2b$12$OVZdQkeRhdCV2dC1x75.6eyij59LWjlPH5JJIakXj32EYe/sbPmMG",
-        "_id": "6467291bcc9136a4fa8866ef",
-        "createdAt": "1684482331288",
+        "name": "Vincentius Bruh",
+        "email": "Vincentiusss@gmail.com",
+        "password": "$2b$12$Y8eozXCgs3SZAIcCV47gGutVO73ks7x5k/2Ed4JIDQZnQ5u.P9MTu",
+        "createdAt": "Sun May 21 2023 22:12:00 GMT+0700 (Western Indonesia Time)",
+        "_id": "646a34cf5b1cef3b56d90bff",
+        "imageUrl": "https://storage.googleapis.com/testing-patuli/placeholder-image.png",
         "__v": 0
     }
 }
@@ -25,7 +26,9 @@
     "error": false,
     "message": "success",
     "data": {
-        "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0NjcyOTFiY2M5MTM2YTRmYTg4NjZlZiIsImlhdCI6MTY4NDQ4MjU0M30.CodjUDEPqylNTzxENI52K8nSVyu884fNqrhDIVxIIXA"
+        "id": "646a34cf5b1cef3b56d90bff",
+        "name": "Vincentius Bruh",
+        "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0NmEzNGNmNWIxY2VmM2I1NmQ5MGJmZiIsImlhdCI6MTY4NDY4MTk2Mn0.ChtCBF-__TRBjZPNIHHTQrL8htSBkG7P8IlUJCrwOSc"
     }
 }
 
@@ -37,11 +40,12 @@
     "error": false,
     "message": "success",
     "data": {
-        "_id": "6467291bcc9136a4fa8866ef",
-        "name": "Vallianzx",
-        "email": "vaa1@gmail.com",
-        "password": "$2b$12$OVZdQkeRhdCV2dC1x75.6eyij59LWjlPH5JJIakXj32EYe/sbPmMG",
-        "createdAt": "1684482331288",
+        "_id": "646a34cf5b1cef3b56d90bff",
+        "name": "Vincentius Bruh",
+        "email": "Vincentiusss@gmail.com",
+        "password": "$2b$12$Y8eozXCgs3SZAIcCV47gGutVO73ks7x5k/2Ed4JIDQZnQ5u.P9MTu",
+        "createdAt": "Sun May 21 2023 22:12:00 GMT+0700 (Western Indonesia Time)",
+        "imageUrl": "https://storage.googleapis.com/testing-patuli/placeholder-image.png",
         "__v": 0
     }
 }
