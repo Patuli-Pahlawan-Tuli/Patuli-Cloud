@@ -1,5 +1,7 @@
 const mongoose = require('mongoose');
 
+var date_time = new Date();
+
 const userSchema = new mongoose.Schema({
   name: {
     type: String,
@@ -26,8 +28,9 @@ const userSchema = new mongoose.Schema({
 
   createdAt: {
     type: String,
-    default: Date.now,
+    default: date_time,
   },
+  
 });
 
 const Account = mongoose.model('User', userSchema);

@@ -15,7 +15,7 @@ dotenv.config();
 require('./database/mongodb');
 
 // PORT AND PATH
-const PORT = process.env.PORT || 8080;
+const PORT = process.env.PORT || 8000;
 const VERSION_API = '/api/v1';
 const appendUrl = (url) => `${VERSION_API}${url}`;
 
