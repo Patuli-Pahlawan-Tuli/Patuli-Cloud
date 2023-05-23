@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-var date_time = new Date();
+const dateTime = new Date();
 
 const userSchema = new mongoose.Schema({
   name: {
@@ -28,9 +28,9 @@ const userSchema = new mongoose.Schema({
 
   createdAt: {
     type: String,
-    default: date_time,
+    default: dateTime,
   },
-  
+
 });
 
 const Account = mongoose.model('User', userSchema);
