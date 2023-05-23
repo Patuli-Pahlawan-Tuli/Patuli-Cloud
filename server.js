@@ -6,6 +6,7 @@ const app = express();
 // ENDPOINT
 const authRoutes = require('./routes/authRoutes');
 const accountRoutes = require('./routes/accountRoutes');
+const lessonRoutes = require('./routes/lessonRoutes');
 
 // MIDDLEWARE
 const pageNotFound = require('./utils/pageNotFound');
@@ -26,6 +27,7 @@ app.use(express.urlencoded({ extended: true }));
 // ROUTER
 app.use(appendUrl('/auth'), authRoutes);
 app.use(appendUrl('/account'), accountRoutes);
+app.use(appendUrl('/lessons'), lessonRoutes);
 
 // ENDPOINT NOT CREATED
 app.use('/', pageNotFound);
