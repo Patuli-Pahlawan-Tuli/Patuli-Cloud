@@ -13,7 +13,7 @@ const register = async (req, res) => {
 
     const accounts = await Account.findOne({ email: request.email });
     if (accounts) {
-      response = new Response.Error(true, 'Email already exist');
+      response = new Response.Error(true, 'Email Sudah Ada');
       res.status(httpStatus.BAD_REQUEST).json(response);
       return;
     }
@@ -34,7 +34,7 @@ const register = async (req, res) => {
 
 const login = async (req, res) => {
   let response = null;
-  const loginErrorMessage = 'Invalid email or password';
+  const loginErrorMessage = 'Invalid email atau password';
   try {
     const request = await loginValidator.validateAsync(req.body);
 

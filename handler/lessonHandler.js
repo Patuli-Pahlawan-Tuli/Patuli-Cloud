@@ -19,12 +19,12 @@ const getAllLesson = async (req, res) => {
   const getLesson = async (req, res) => {
     let response = null;
     const idParams = req.params._id
-    const idQuery = req.query._id
+    // const idQuery = req.query._id
     try {
       const lessons = await Lesson.findOne({'_id': idParams});
 
       if(!lessons){
-        response = new Response.Error(true, "Gak ketemu");
+        response = new Response.Error(true, "Lesson Tidak Ketemu");
         res.status(httpStatus.BAD_REQUEST).json(response);
         return;
       }
