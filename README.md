@@ -143,11 +143,4 @@
 
 ## lain-lain
 Jangan lupa buat file .env
-Contoh isinya
-
-KEY = gpRnbU2fBkxr995sxuTZ5b8Pz9i0wHN5
-MONGO_DB = mongodb://localhost:27017/
-
-MONGO_DB sesuaikan sendiri dengan punyamu
-KEY bebas kalau mau ganti yang penting secret
 
