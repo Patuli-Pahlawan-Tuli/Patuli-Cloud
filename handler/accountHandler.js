@@ -86,6 +86,7 @@ const updateAccount = async (req, res) => {
     await Account.findByIdAndUpdate(accountId, { imageUrl: uploadUrl } );
 
     const response = new Response.Success(false, 'Profile picture updated successfully');
+    res.set('Content-Type', 'multipart/form-data')
     res.status(httpStatus.OK).json(response);
 
     blobStream.end(req.file.buffer);
