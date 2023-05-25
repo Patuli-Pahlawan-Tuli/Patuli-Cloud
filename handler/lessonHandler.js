@@ -19,7 +19,6 @@ const getAllLesson = async (req, res) => {
   const getLesson = async (req, res) => {
     let response = null;
     const idParams = req.params._id
-    // const idQuery = req.query._id
     try {
       const lessons = await Lesson.findOne({'_id': idParams});
 

@@ -2,14 +2,6 @@ const util = require('util');
 const Multer = require('multer');
 const maxSize = 5 * 1024 * 1024;
 
-// const imageFileFilter = (req, file, callback) => {
-//   const ext = path.extname(file.originalname);
-//   if (ext !== '.png' && ext !== '.jpg' && ext !== '.jpeg') {
-//     return callback(new Error('Only images are allowed'));
-//   }
-//   callback(null, true);
-// };
-
 let processFile = Multer({
   storage: Multer.memoryStorage(),
   limits: { fileSize: maxSize },

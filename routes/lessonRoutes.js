@@ -1,7 +1,6 @@
 const express = require('express');
 const Auth = require("../middleware/Auth");
 
-
 const router = new express.Router();
 const lessonHandler = require('../handler/lessonHandler');
 

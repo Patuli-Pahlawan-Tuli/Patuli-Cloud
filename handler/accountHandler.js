@@ -4,7 +4,6 @@ const Response = require('../model/Response');
 const Account = require('../model/Account');
 const accountPassValidator = require('../utils/accountPassValidator');
 const bcrypt = require('../utils/bcrypt');
-// const UserImages = require('../model/UserImages');
 const uploadFile = require('../middleware/uploadImageFile');
 const { format } = require('util');
 
@@ -51,7 +50,6 @@ const updatePassword = async (req, res) => {
 const updateAccount = async (req, res) => {
   try {
     const accountId = req.currentUser._id;
-    // const accountEmail = req.currentUser.email;
 
     await uploadFile(req, res);
 
@@ -85,18 +83,8 @@ const updateAccount = async (req, res) => {
 
     const uploadUrl = `https://storage.googleapis.com/${bucket.name}/${blob.name.toLowerCase().split(' ').join('-')}`;
 
-    // const upload = new Account({
-    //   accountId,
-    //   email: accountEmail,
-    //   // password: accountPassword
-    //   // imageUrl: uploadUrl,
-    // });
-    // const uploadSave = await upload.save();
-
-    // Update account profiles images
     await Account.findByIdAndUpdate(accountId, { imageUrl: uploadUrl } );
 
-    // Return response
     const response = new Response.Success(false, 'Profile picture updated successfully');
     res.status(httpStatus.OK).json(response);
 
