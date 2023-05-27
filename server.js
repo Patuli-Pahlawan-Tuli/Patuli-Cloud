@@ -7,6 +7,7 @@ const app = express();
 const authRoutes = require('./routes/authRoutes');
 const accountRoutes = require('./routes/accountRoutes');
 const lessonRoutes = require('./routes/lessonRoutes');
+const questionRoutes = require('./routes/questionRoutes');
 
 // MIDDLEWARE
 const pageNotFound = require('./utils/pageNotFound');
@@ -28,6 +29,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(appendUrl('/auth'), authRoutes);
 app.use(appendUrl('/account'), accountRoutes);
 app.use(appendUrl('/lessons'), lessonRoutes);
+app.use(appendUrl('/questions'), questionRoutes);
 
 // ENDPOINT NOT CREATED
 app.use('/', pageNotFound);

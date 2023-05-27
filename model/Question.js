@@ -2,29 +2,24 @@ const mongoose = require('mongoose');
 
 const dateTime = new Date();
 
-const lessonSchema = new mongoose.Schema({
-  lessonNumber: {
+const questionSchema = new mongoose.Schema({
+  questionNumber: {
     type: Number,
     required: true,
     unique: true,
   },
 
-  lessonName: {
+  question: {
     type: String,
     required: true,
   },
 
-  lessonType: {
+  questionDifficulty: {
     type: String,
     required: true,
   },
 
-  description: {
-    type: String,
-    required: true,
-  },
-
-  imageUrl: {
+  answer: {
     type: String,
     required: true,
   },
@@ -36,6 +31,6 @@ const lessonSchema = new mongoose.Schema({
 
 });
 
-const Lesson = mongoose.model('Lesson', lessonSchema);
+const Question = mongoose.model('Question', questionSchema);
 
-module.exports = Lesson;
+module.exports = Question;
