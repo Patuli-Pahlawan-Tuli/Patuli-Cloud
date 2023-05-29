@@ -22,7 +22,7 @@ const register = async (req, res) => {
     request.password = hashedPassword;
 
     const account = new Account(request);
-    account.imageUrl = 'https://storage.googleapis.com/testing-patuli/placeholder-image.png';
+    account.imageUrl = 'https://storage.googleapis.com/patuli-storage/placeholder-image.png';
     const result = await account.save();
     response = new Response.Success(false, 'Account Created', result);
     res.status(httpStatus.OK).json(response);

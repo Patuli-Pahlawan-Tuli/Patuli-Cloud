@@ -9,8 +9,8 @@ const { format } = require('util');
 
 const { Storage } = require('@google-cloud/storage');
 const storage = new Storage({
-  projectId: 'practice-bros',
-  credentials: require('../practice-bros-b9b6ab3959ee.json')
+  projectId: 'patuli-project',
+  credentials: require('../patuli-project-key.json')
 });
 const bucket = storage.bucket('testing-patuli');
 
