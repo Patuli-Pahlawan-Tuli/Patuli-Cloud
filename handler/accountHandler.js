@@ -12,7 +12,7 @@ const storage = new Storage({
   projectId: 'patuli-project',
   credentials: require('../patuli-project-key.json')
 });
-const bucket = storage.bucket('testing-patuli');
+const bucket = storage.bucket('patuli-storage');
 
 const getAccount = async (req, res) => {
   const account = req.currentUser;
