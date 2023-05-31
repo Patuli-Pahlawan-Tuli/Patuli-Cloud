@@ -1,6 +1,8 @@
 const mongoose = require('mongoose');
 
 const dateTime = new Date();
+let levelAccount = 1;
+let expAccount = 1;
 
 const userSchema = new mongoose.Schema({
   name: {
@@ -24,6 +26,16 @@ const userSchema = new mongoose.Schema({
   imageUrl: {
     type: String,
     required: true,
+  },
+
+  accountLevel: {
+    type: Number,
+    default: levelAccount,
+  },
+
+  accountExp: {
+    type: Number,
+    default: expAccount,
   },
 
   createdAt: {
