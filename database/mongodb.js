@@ -16,13 +16,20 @@ const callAccessSecretVersion = async () => {
 }
 
 const connectToDatabase = async () => {
-  try {
-    const secretValue = await callAccessSecretVersion();
-    await mongoose.connect(secretValue);
-    console.log('Database Connected');
-  } catch (error) {
-    console.log(error.message);
-  }
+  // try {
+  //   const secretValue = await callAccessSecretVersion();
+  //   await mongoose.connect(secretValue);
+  //   console.log('Database Connected');
+  // } catch (error) {
+  //   console.log(error.message);
+  // }
+
+  const secretValue = await callAccessSecretVersion();
+
+  await mongoose
+  .connect(secretValue)
+  .then(() => console.log('Database Connected'))
+  .catch((error) => console.log(error.message));
 }
 
 connectToDatabase();
