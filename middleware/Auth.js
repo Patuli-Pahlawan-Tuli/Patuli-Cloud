@@ -3,8 +3,23 @@ const httpStatus = require('http-status');
 const Account = require('../model/Account');
 const Response = require('../model/Response');
 const clearToken = require('../utils/clearToken');
+const { SecretManagerServiceClient } = require('@google-cloud/secret-manager');
 
-const Auth = (req, res, next) => {
+const secretmanagerClient = new SecretManagerServiceClient();
+
+const callAccessSecretVersion = async () => {
+  // Construct request
+  const request = {
+    name: 'projects/706533766585/secrets/KEY/versions/latest'
+  };
+
+  // Run request
+  const [response] = await secretmanagerClient.accessSecretVersion(request);
+  const secretValue = response.payload.data.toString();
+  return secretValue;
+}
+
+const Auth = async (req, res, next) => {
   const token = req.headers.authorization;
   const response = new Response.Error(true, 'Unauthorized');
 
@@ -15,16 +30,27 @@ const Auth = (req, res, next) => {
 
   const myToken = clearToken(token);
 
-  jwt.verify(myToken, process.env.KEY, async (error, payload) => {
-    if (error) {
-      res.status(httpStatus.UNAUTHORIZED).json(response);
-      return;
-    }
+  try {
+    const payload = await jwt.verify(myToken, process.env.KEY);
     const { id } = payload;
     const account = await Account.findOne({ _id: id });
     req.currentUser = account;
     next();
-  });
+  } catch (error) {
+    res.status(httpStatus.UNAUTHORIZED).json(response);
+  }
+
+
+  // jwt.verify(myToken, process.env.KEY, async (error, payload) => {
+  //   if (error) {
+  //     res.status(httpStatus.UNAUTHORIZED).json(response);
+  //     return;
+  //   }
+  //   const { id } = payload;
+  //   const account = await Account.findOne({ _id: id });
+  //   req.currentUser = account;
+  //   next();
+  // });
 };
 
 module.exports = Auth;

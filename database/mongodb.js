@@ -18,14 +18,10 @@ const callAccessSecretVersion = async () => {
 const connectToDatabase = async () => {
   try {
     const secretValue = await callAccessSecretVersion();
-    await mongoose.connect(secretValue, {
-      useNewUrlParser: true,
-      useUnifiedTopology: true,
-    });
+    await mongoose.connect(secretValue);
     console.log('Database Connected');
   } catch (error) {
     console.log(error.message);
-    throw error;
   }
 }
 
