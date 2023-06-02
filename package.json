@@ -10,6 +10,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@google-cloud/storage": "^6.10.1",
     "aguid": "^2.0.0",
     "bcrypt": "^5.1.0",
     "dotenv": "^16.0.3",
@@ -17,10 +18,11 @@
     "http-status": "^1.6.2",
     "joi": "^17.9.2",
     "jsonwebtoken": "^9.0.0",
-    "mongoose": "^7.1.1"
+    "mongoose": "^7.1.1",
+    "multer": "^1.4.5-lts.1"
   },
   "devDependencies": {
-    "eslint": "^8.40.0",
+    "eslint": "^8.41.0",
     "eslint-config-airbnb-base": "^15.0.0",
     "eslint-plugin-import": "^2.27.5",
     "nodemon": "^2.0.22"

@@ -13,7 +13,7 @@ const register = async (req, res) => {
 
     const accounts = await Account.findOne({ email: request.email });
     if (accounts) {
-      response = new Response.Error(true, 'Email already exist');
+      response = new Response.Error(true, 'Email Sudah Ada');
       res.status(httpStatus.BAD_REQUEST).json(response);
       return;
     }
@@ -22,7 +22,7 @@ const register = async (req, res) => {
     request.password = hashedPassword;
 
     const account = new Account(request);
-    account.imageUrl = 'https://storage.googleapis.com/testing-patuli/placeholder-image.png';
+    account.imageUrl = 'https://storage.googleapis.com/patuli-storage/placeholder-image.png';
     const result = await account.save();
     response = new Response.Success(false, 'Account Created', result);
     res.status(httpStatus.OK).json(response);
@@ -34,7 +34,7 @@ const register = async (req, res) => {
 
 const login = async (req, res) => {
   let response = null;
-  const loginErrorMessage = 'Invalid email or password';
+  const loginErrorMessage = 'Invalid email atau password';
   try {
     const request = await loginValidator.validateAsync(req.body);
 
@@ -56,7 +56,11 @@ const login = async (req, res) => {
     }
 
     const createJwtToken = jwt.sign({ id: account._id }, process.env.KEY);
-    const data = { token: createJwtToken };
+    const data = {
+      id: account._id,
+      name: account.name,
+      token: createJwtToken,
+    };
     response = new Response.Success(false, 'success', data);
     res.status(httpStatus.OK).json(response);
   } catch (error) {

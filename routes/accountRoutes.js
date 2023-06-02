@@ -7,11 +7,6 @@ const accountHandler = require('../handler/accountHandler');
 router.use(Auth);
 router.get('/profile', accountHandler.getAccount);
 router.put('/edit-password', accountHandler.updatePassword);
-
-// profile image route
-// router.post("/profile/images", userController.updateUser);
-
-// history route
-// router.get("/history", historyController.getHistory);
+router.put('/edit-image', accountHandler.updateAccount);
 
 module.exports = router;

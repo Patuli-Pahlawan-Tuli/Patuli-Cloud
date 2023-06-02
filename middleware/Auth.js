@@ -4,7 +4,7 @@ const Account = require('../model/Account');
 const Response = require('../model/Response');
 const clearToken = require('../utils/clearToken');
 
-const requireAuth = (req, res, next) => {
+const Auth = (req, res, next) => {
   const token = req.headers.authorization;
   const response = new Response.Error(true, 'Unauthorized');
 
@@ -27,4 +27,4 @@ const requireAuth = (req, res, next) => {
   });
 };
 
-module.exports = requireAuth;
+module.exports = Auth;

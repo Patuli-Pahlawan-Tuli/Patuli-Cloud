@@ -1,5 +1,9 @@
 const mongoose = require('mongoose');
 
+const dateTime = new Date();
+let levelAccount = 1;
+let expAccount = 1;
+
 const userSchema = new mongoose.Schema({
   name: {
     type: String,
@@ -24,10 +28,21 @@ const userSchema = new mongoose.Schema({
     required: true,
   },
 
+  accountLevel: {
+    type: Number,
+    default: levelAccount,
+  },
+
+  accountExp: {
+    type: Number,
+    default: expAccount,
+  },
+
   createdAt: {
     type: String,
-    default: Date.now,
+    default: dateTime,
   },
+
 });
 
 const Account = mongoose.model('User', userSchema);
