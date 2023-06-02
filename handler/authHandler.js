@@ -5,6 +5,21 @@ const Account = require('../model/Account');
 const accountValidator = require('../utils/accountValidator');
 const loginValidator = require('../utils/loginValidator');
 const bcrypt = require('../utils/bcrypt');
+const { SecretManagerServiceClient } = require('@google-cloud/secret-manager');
+
+const secretmanagerClient = new SecretManagerServiceClient();
+
+const callAccessSecretVersion = async () => {
+  // Construct request
+  const request = {
+    name: 'projects/706533766585/secrets/KEY/versions/latest'
+  };
+
+  // Run request
+  const [response] = await secretmanagerClient.accessSecretVersion(request);
+  const secretValue = response.payload.data.toString();
+  return secretValue;
+}
 
 const register = async (req, res) => {
   let response = null;
@@ -55,7 +70,7 @@ const login = async (req, res) => {
       return;
     }
 
-    const createJwtToken = jwt.sign({ id: account._id }, process.env.KEY);
+    const createJwtToken = jwt.sign({ id: account._id }, await callAccessSecretVersion());
     const data = {
       id: account._id,
       name: account.name,
