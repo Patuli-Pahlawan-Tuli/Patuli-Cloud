@@ -8,16 +8,9 @@ const uploadFile = require('../middleware/uploadImageFile');
 const { format } = require('util');
 
 const { Storage } = require('@google-cloud/storage');
-// const { SecretManagerServiceClient } = require('@google-cloud/secret-manager');
-
-// const storage = new Storage({
-//   projectId: 'patuli-project',
-//   credentials: require('../patuli-project-key.json')
-// });
 
 const storage = new Storage({
   projectId: 'patuli-project'
-  // credentials: require(callAccessSecretVersion())
 });
 
 const bucket = storage.bucket('patuli-storage');

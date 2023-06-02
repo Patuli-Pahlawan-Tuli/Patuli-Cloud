@@ -29,26 +29,6 @@ const getLessonByType = async (req, res) => {
   }
 };
 
-// const getLesson = async (req, res) => {
-//   let response = null;
-//   const idParams = req.params._id;
-//   try {
-//     const lessons = await Lesson.findOne({'_id': idParams});
-
-//     if(!lessons) {
-//       response = new Response.Error(true, 'Lesson Tidak Ketemu');
-//       res.status(httpStatus.BAD_REQUEST).json(response);
-//       return;
-//     }
-
-//     response = new Response.Success(false, 'success', lessons);
-//     res.status(httpStatus.OK).json(response); 
-//   } catch (error) {
-//     response = new Response.Error(true, error.message);
-//     res.status(httpStatus.BAD_REQUEST).json(response);
-//   }
-// };
-
 const getLessonByNumber = async (req, res) => {
   let response = null;
   const numberParams = req.params.lessonNumber;

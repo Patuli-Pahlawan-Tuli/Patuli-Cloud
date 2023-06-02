@@ -2,19 +2,19 @@ const mongoose = require('mongoose');
 
 const dateTime = new Date();
 
-const questionSchema = new mongoose.Schema({
-  questionNumber: {
+const quizSchema = new mongoose.Schema({
+  quizNumber: {
     type: Number,
     required: true,
     unique: true,
   },
 
-  question: {
+  quiz: {
     type: String,
     required: true,
   },
 
-  questionDifficulty: {
+  quizDifficulty: {
     type: String,
     required: true,
   },
@@ -31,6 +31,6 @@ const questionSchema = new mongoose.Schema({
 
 });
 
-const Question = mongoose.model('Question', questionSchema);
+const Quiz = mongoose.model('Quiz', quizSchema);
 
-module.exports = Question;
+module.exports = Quiz;

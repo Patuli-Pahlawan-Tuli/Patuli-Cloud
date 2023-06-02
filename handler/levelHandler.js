@@ -1,7 +1,6 @@
 const httpStatus = require('http-status');
 const Response = require('../model/Response');
 const Account = require('../model/Account');
-// const Question = 
 
 const updateExp = async (req, res) => {
   let response = null;
@@ -39,17 +38,17 @@ const updateLevel = async (req, res) => {
   }
 };
 
-const updateCompletedQuestion = async (req, res) => {
+const updateCompletedQuiz = async (req, res) => {
   let response = null;
 
   try {
     const accountId = req.currentUser._id;
     const request = req.body;
-    const bodycompletedQuestion = request.newQuestComplete;
+    const bodycompletedQuiz = request.newQuestComplete;
 
-    await Account.findByIdAndUpdate(accountId, { $inc:{ completedQuestion: bodycompletedQuestion } });
+    await Account.findByIdAndUpdate(accountId, { $inc:{ completedQuiz: bodycompletedQuiz } });
 
-    response = new Response.Success(false, 'Completed Question updated successfully');
+    response = new Response.Success(false, 'Completed quiz updated successfully');
     res.status(httpStatus.OK).json(response);
   } catch (error) {
     response = new Response.Error(true, error.message);
@@ -57,4 +56,4 @@ const updateCompletedQuestion = async (req, res) => {
   }
 };
 
-module.exports = { updateExp, updateLevel, updateCompletedQuestion };
+module.exports = { updateExp, updateLevel, updateCompletedQuiz };

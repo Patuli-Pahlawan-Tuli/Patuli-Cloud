@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
 const dateTime = new Date();
 let levelAccount = 1;
 let expAccount = 1;
-let questionComplete = 0;
+let quizComplete = 0;
 
 const userSchema = new mongoose.Schema({
   name: {
@@ -39,9 +39,9 @@ const userSchema = new mongoose.Schema({
     default: expAccount,
   },
 
-  completedQuestion: {
+  completedQuiz: {
     type: Number,
-    default: questionComplete,
+    default: quizComplete,
   },
 
   createdAt: {
