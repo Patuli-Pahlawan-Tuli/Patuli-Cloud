@@ -31,7 +31,7 @@ const Auth = async (req, res, next) => {
   const myToken = clearToken(token);
 
   try {
-    const payload = await jwt.verify(myToken, process.env.KEY);
+    const payload = await jwt.verify(myToken, callAccessSecretVersion());
     const { id } = payload;
     const account = await Account.findOne({ _id: id });
     req.currentUser = account;
