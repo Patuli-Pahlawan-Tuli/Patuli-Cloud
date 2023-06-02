@@ -31,7 +31,7 @@ const updateLevel = async (req, res) => {
 
     await Account.findByIdAndUpdate(accountId, { $inc:{ accountLevel: bodyAccountLvl } });
 
-    response = new Response.Success(false, 'Exp updated successfully');
+    response = new Response.Success(false, 'Level updated successfully');
     res.status(httpStatus.OK).json(response);
   } catch (error) {
     response = new Response.Error(true, error.message);
