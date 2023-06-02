@@ -12,7 +12,7 @@ const secretmanagerClient = new SecretManagerServiceClient();
 const callAccessSecretVersion = async () => {
   // Construct request
   const request = {
-    name: 'projects/patuli-project/secrets/KEY/versions/latest'
+    name: 'projects/706533766585/secrets/KEY/versions/latest'
   };
 
   // Run request
