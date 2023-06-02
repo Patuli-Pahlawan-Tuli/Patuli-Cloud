@@ -30,27 +30,27 @@ const Auth = async (req, res, next) => {
 
   const myToken = clearToken(token);
 
-  try {
-    const payload = await jwt.verify(myToken, callAccessSecretVersion());
-    const { id } = payload;
-    const account = await Account.findOne({ _id: id });
-    req.currentUser = account;
-    next();
-  } catch (error) {
-    res.status(httpStatus.UNAUTHORIZED).json(response);
-  }
-
-
-  // jwt.verify(myToken, process.env.KEY, async (error, payload) => {
-  //   if (error) {
-  //     res.status(httpStatus.UNAUTHORIZED).json(response);
-  //     return;
-  //   }
+  // try {
+  //   const payload = await jwt.verify(myToken, callAccessSecretVersion());
   //   const { id } = payload;
   //   const account = await Account.findOne({ _id: id });
   //   req.currentUser = account;
   //   next();
-  // });
+  // } catch (error) {
+  //   res.status(httpStatus.UNAUTHORIZED).json(response);
+  // }
+
+
+  jwt.verify(myToken, await callAccessSecretVersion(), async (error, payload) => {
+    if (error) {
+      res.status(httpStatus.UNAUTHORIZED).json(response);
+      return;
+    }
+    const { id } = payload;
+    const account = await Account.findOne({ _id: id });
+    req.currentUser = account;
+    next();
+  });
 };
 
 module.exports = Auth;
