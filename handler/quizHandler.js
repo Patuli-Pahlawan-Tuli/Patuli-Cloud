@@ -37,11 +37,12 @@ const getQuizByDifficulty = async (req, res) => {
 
 const getQuizByNumber = async (req, res) => {
   let response = null;
+  const diffParams = req.params.quizDifficulty;
   const numberParams = req.params.quizNumber;
   try {
-    const quizzes = await Quiz.find({'quizNumber': numberParams});
+    const quizzes = await Quiz.find({'quizNumber': numberParams , 'quizDifficulty': diffParams});
 
-    if(!quizzes) {
+    if(quizzes.length === 0) {
       response = new Response.Error(true, 'Pertanyaan Tidak Ketemu');
       res.status(httpStatus.BAD_REQUEST).json(response);
       return;

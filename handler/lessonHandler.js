@@ -31,11 +31,12 @@ const getLessonByType = async (req, res) => {
 
 const getLessonByNumber = async (req, res) => {
   let response = null;
+  const lessonTypeParams = req.params.lessonType;
   const numberParams = req.params.lessonNumber;
   try {
-    const lessons = await Lesson.findOne({'lessonNumber': numberParams});
+    const lessons = await Lesson.find({'lessonNumber': numberParams, 'lessonType': lessonTypeParams});
 
-    if(!lessons) {
+    if(lessons.length === 0) {
       response = new Response.Error(true, 'Lesson Tidak Ketemu');
       res.status(httpStatus.BAD_REQUEST).json(response);
       return;
