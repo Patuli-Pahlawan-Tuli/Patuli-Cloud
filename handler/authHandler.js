@@ -39,7 +39,7 @@ const register = async (req, res) => {
     const account = new Account(request);
     account.imageUrl = 'https://storage.googleapis.com/patuli-storage/placeholder-image.png';
     const result = await account.save();
-    response = new Response.Success(false, 'Account Created', result);
+    response = new Response.Success(false, 'Akun berhasil dibuat', result);
     res.status(httpStatus.OK).json(response);
   } catch (error) {
     response = new Response.Error(true, error.message);

@@ -32,7 +32,7 @@ const updatePassword = async (req, res) => {
     const isValidPassword = await bcrypt.compare(bodyAccountPassword, accountPassword);
 
     if (!isValidPassword) {
-      response = new Response.Error(true, 'Old password does not matched');
+      response = new Response.Error(true, 'Password baru tidak sesuai dengan password lama');
       res.status(httpStatus.BAD_REQUEST).json(response);
     }
 
@@ -40,7 +40,7 @@ const updatePassword = async (req, res) => {
 
     await Account.findByIdAndUpdate(accountId, { password: hashedPassword });
 
-    response = new Response.Success(false, 'Password edited successfully');
+    response = new Response.Success(false, 'Password berhasil diubah');
     res.status(httpStatus.OK).json(response);
   } catch (error) {
     response = new Response.Error(true, error.message);
@@ -55,14 +55,14 @@ const updateAccount = async (req, res) => {
     await uploadFile(req, res);
 
     if (!req.file) {
-      const response = new Response.Error(400, 'Please upload a image!' );
+      const response = new Response.Error(400, 'Tolong unggah foto!' );
       return res.status(httpStatus.BAD_REQUEST).json(response);
     }
 
     const fileExt = req.file.originalname.split('.').pop();
 
     if (fileExt !== 'png' && fileExt !== 'jpg' && fileExt !== 'jpeg' && fileExt !== 'PNG' && fileExt !== 'JPG' && fileExt !== 'JPEG') {
-      const response = new Response.Error(400, 'Only image(PNG, JPG, and JPEG) is allowed' );
+      const response = new Response.Error(400, 'Hanya menerima foto dengan format PNG, JPG, dan JPEG');
       return res.status(httpStatus.BAD_REQUEST).json(response);
     }
 
@@ -86,7 +86,7 @@ const updateAccount = async (req, res) => {
 
     await Account.findByIdAndUpdate(accountId, { imageUrl: uploadUrl } );
 
-    const response = new Response.Success(false, 'Profile picture updated successfully');
+    const response = new Response.Success(false, 'Foto profil berhasil diubah');
     res.set('Content-Type', 'multipart/form-data')
     res.status(httpStatus.OK).json(response);
 

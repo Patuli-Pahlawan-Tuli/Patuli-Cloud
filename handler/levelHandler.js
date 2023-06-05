@@ -12,7 +12,7 @@ const updateExp = async (req, res) => {
 
     await Account.findByIdAndUpdate(accountId, { $inc:{ accountExp: bodyAccountExp } });
 
-    response = new Response.Success(false, 'Exp updated successfully');
+    response = new Response.Success(false, 'Exp berhasil diperbarui');
     res.status(httpStatus.OK).json(response);
   } catch (error) {
     response = new Response.Error(true, error.message);
@@ -30,7 +30,7 @@ const updateLevel = async (req, res) => {
 
     await Account.findByIdAndUpdate(accountId, { $inc:{ accountLevel: bodyAccountLvl } });
 
-    response = new Response.Success(false, 'Level updated successfully');
+    response = new Response.Success(false, 'Level berhasil diperbarui');
     res.status(httpStatus.OK).json(response);
   } catch (error) {
     response = new Response.Error(true, error.message);
@@ -48,7 +48,7 @@ const updateCompletedQuiz = async (req, res) => {
 
     await Account.findByIdAndUpdate(accountId, { $inc:{ completedQuiz: bodycompletedQuiz } });
 
-    response = new Response.Success(false, 'Completed quiz updated successfully');
+    response = new Response.Success(false, 'Completed quiz berhasil diperbarui');
     res.status(httpStatus.OK).json(response);
   } catch (error) {
     response = new Response.Error(true, error.message);

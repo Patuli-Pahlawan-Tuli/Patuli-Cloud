@@ -37,7 +37,7 @@ const getLessonByNumber = async (req, res) => {
     const lessons = await Lesson.find({'lessonNumber': numberParams, 'lessonType': lessonTypeParams});
 
     if(lessons.length === 0) {
-      response = new Response.Error(true, 'Lesson Tidak Ketemu');
+      response = new Response.Error(true, 'Lesson tidak ketemu');
       res.status(httpStatus.BAD_REQUEST).json(response);
       return;
     }

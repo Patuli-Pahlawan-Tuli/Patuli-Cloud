@@ -22,7 +22,7 @@ const getQuizByDifficulty = async (req, res) => {
     const quizzes = await Quiz.find({'quizDifficulty': diffParams});
 
     if(!quizzes) {
-      response = new Response.Error(true, 'Pertanyaan Tidak Ketemu');
+      response = new Response.Error(true, 'Quiz tidak ketemu');
       res.status(httpStatus.BAD_REQUEST).json(response);
       return;
     }
@@ -43,7 +43,7 @@ const getQuizByNumber = async (req, res) => {
     const quizzes = await Quiz.find({'quizNumber': numberParams , 'quizDifficulty': diffParams});
 
     if(quizzes.length === 0) {
-      response = new Response.Error(true, 'Pertanyaan Tidak Ketemu');
+      response = new Response.Error(true, 'Quiz tidak ketemu');
       res.status(httpStatus.BAD_REQUEST).json(response);
       return;
     }
