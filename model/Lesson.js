@@ -6,7 +6,6 @@ const lessonSchema = new mongoose.Schema({
   lessonNumber: {
     type: Number,
     required: true,
-    unique: true,
   },
 
   lessonName: {

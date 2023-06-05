@@ -6,7 +6,6 @@ const quizSchema = new mongoose.Schema({
   quizNumber: {
     type: Number,
     required: true,
-    unique: true,
   },
 
   quiz: {
