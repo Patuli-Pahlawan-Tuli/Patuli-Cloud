@@ -10,6 +10,7 @@ const accountRoutes = require('./routes/accountRoutes');
 const lessonRoutes = require('./routes/lessonRoutes');
 const quizRoutes = require('./routes/quizRoutes');
 const levelRoutes = require('./routes/levelRoutes');
+const hashRoutes = require('./routes/hashRoutes');
 
 // MIDDLEWARE
 const pageNotFound = require('./utils/pageNotFound');
@@ -33,6 +34,7 @@ app.use(appendUrl('/account'), accountRoutes);
 app.use(appendUrl('/lessons'), lessonRoutes);
 app.use(appendUrl('/quizzes'), quizRoutes);
 app.use(appendUrl('/level'), levelRoutes);
+app.use(appendUrl('/hash'), hashRoutes);
 
 // ENDPOINT NOT CREATED
 app.use('/', pageNotFound);
