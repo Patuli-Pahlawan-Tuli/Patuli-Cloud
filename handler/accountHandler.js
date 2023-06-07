@@ -32,7 +32,7 @@ const updatePassword = async (req, res) => {
     const isValidPassword = await bcrypt.compare(bodyAccountPassword, accountPassword);
 
     if (!isValidPassword) {
-      response = new Response.Error(true, 'Anda salah mengetik password lama');
+      response = new Response.Error(true, 'Password lama tidak sesuai');
       res.status(httpStatus.BAD_REQUEST).json(response);
     }
 
