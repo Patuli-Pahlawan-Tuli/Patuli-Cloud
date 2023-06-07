@@ -38,22 +38,54 @@ const updateLevel = async (req, res) => {
   }
 };
 
-const updateCompletedQuiz = async (req, res) => {
+const updateCompletedQuizBeginner = async (req, res) => {
   let response = null;
 
   try {
     const accountId = req.currentUser._id;
+    const accountCompletedQuiz = req.currentUser.completedQuiz;
     const request = req.body;
-    const bodycompletedQuiz = request.newQuestComplete;
+    let bodycompletedQuiz = request.newQuestComplete;
 
-    await Account.findByIdAndUpdate(accountId, { $inc:{ completedQuiz: bodycompletedQuiz } });
-
-    response = new Response.Success(false, 'Completed quiz berhasil diperbarui');
-    res.status(httpStatus.OK).json(response);
+    if (accountCompletedQuiz === 0) {
+      if (bodycompletedQuiz >= 1 || bodycompletedQuiz < 1) {
+        bodycompletedQuiz = 1;
+      
+        await Account.findByIdAndUpdate(accountId, { completedQuiz: bodycompletedQuiz });
+        response = new Response.Success(false, 'Completed quiz berhasil diperbarui');
+        res.status(httpStatus.OK).json(response);
+      }
+    }
+    throw new Error('Anda sudah melewati level beginner');
   } catch (error) {
     response = new Response.Error(true, error.message);
     res.status(httpStatus.BAD_REQUEST).json(response);
   }
 };
 
-module.exports = { updateExp, updateLevel, updateCompletedQuiz };
+const updateCompletedQuizIntermediete = async (req, res) => {
+  let response = null;
+
+  try {
+    const accountId = req.currentUser._id;
+    const accountCompletedQuiz = req.currentUser.completedQuiz;
+    const request = req.body;
+    let bodycompletedQuiz = request.newQuestComplete;
+
+    if (accountCompletedQuiz === 1) {
+      if (bodycompletedQuiz >= 2 || bodycompletedQuiz < 2) {
+        bodycompletedQuiz = 2;
+      
+        await Account.findByIdAndUpdate(accountId, { completedQuiz: bodycompletedQuiz });
+        response = new Response.Success(false, 'Completed quiz berhasil diperbarui');
+        res.status(httpStatus.OK).json(response);
+      }
+    }
+    throw new Error('Anda sudah melewati level intermediete');
+  } catch (error) {
+    response = new Response.Error(true, error.message);
+    res.status(httpStatus.BAD_REQUEST).json(response);
+  }
+};
+
+module.exports = { updateExp, updateLevel, updateCompletedQuizBeginner, updateCompletedQuizIntermediete };
