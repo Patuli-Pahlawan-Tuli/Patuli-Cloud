@@ -18,6 +18,11 @@ const quizSchema = new mongoose.Schema({
     required: true,
   },
 
+  languageType: {
+    type: String,
+    required: true,
+  },
+
   answer: {
     type: String,
     required: true,
