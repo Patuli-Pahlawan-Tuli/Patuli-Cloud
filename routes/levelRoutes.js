@@ -8,6 +8,6 @@ router.use(Auth);
 router.put('/edit-exp', levelHandler.updateExp);
 router.put('/edit-level', levelHandler.updateLevel);
 router.put('/edit-completed-quiz-beginner', levelHandler.updateCompletedQuizBeginner);
-router.put('/edit-completed-quiz-intermediete', levelHandler.updateCompletedQuizIntermediete);
+router.put('/edit-completed-quiz-intermediate', levelHandler.updateCompletedQuizIntermediate);
 
 module.exports = router;

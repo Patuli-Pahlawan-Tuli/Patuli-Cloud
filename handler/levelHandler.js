@@ -63,7 +63,7 @@ const updateCompletedQuizBeginner = async (req, res) => {
   }
 };
 
-const updateCompletedQuizIntermediete = async (req, res) => {
+const updateCompletedQuizIntermediate = async (req, res) => {
   let response = null;
 
   try {
@@ -81,11 +81,11 @@ const updateCompletedQuizIntermediete = async (req, res) => {
         res.status(httpStatus.OK).json(response);
       }
     }
-    throw new Error('Anda sudah melewati level intermediete');
+    throw new Error('Anda sudah melewati level intermediate');
   } catch (error) {
     response = new Response.Error(true, error.message);
     res.status(httpStatus.BAD_REQUEST).json(response);
   }
 };
 
-module.exports = { updateExp, updateLevel, updateCompletedQuizBeginner, updateCompletedQuizIntermediete };
+module.exports = { updateExp, updateLevel, updateCompletedQuizBeginner, updateCompletedQuizIntermediate };
