@@ -88,4 +88,29 @@ const updateCompletedQuizIntermediate = async (req, res) => {
   }
 };
 
-module.exports = { updateExp, updateLevel, updateCompletedQuizBeginner, updateCompletedQuizIntermediate };
+const updateCompletedQuizExpert = async (req, res) => {
+  let response = null;
+
+  try {
+    const accountId = req.currentUser._id;
+    const accountCompletedQuiz = req.currentUser.completedQuiz;
+    const request = req.body;
+    let bodycompletedQuiz = request.newQuestComplete;
+
+    if (accountCompletedQuiz === 2) {
+      if (bodycompletedQuiz >= 3 || bodycompletedQuiz < 3) {
+        bodycompletedQuiz = 3;
+      
+        await Account.findByIdAndUpdate(accountId, { completedQuiz: bodycompletedQuiz });
+        response = new Response.Success(false, 'Completed quiz berhasil diperbarui');
+        res.status(httpStatus.OK).json(response);
+      }
+    }
+    throw new Error('Anda sudah melewati level expert');
+  } catch (error) {
+    response = new Response.Error(true, error.message);
+    res.status(httpStatus.BAD_REQUEST).json(response);
+  }
+};
+
+module.exports = { updateExp, updateLevel, updateCompletedQuizBeginner, updateCompletedQuizIntermediate, updateCompletedQuizExpert };
