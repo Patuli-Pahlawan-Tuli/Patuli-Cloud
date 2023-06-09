@@ -121,8 +121,8 @@
 
 ```json
 {
-    "error":false,
-    "message":"Foto profil berhasil diubah"
+    "error": false,
+    "message": "Foto profil berhasil diubah"
 }
 ```
 
