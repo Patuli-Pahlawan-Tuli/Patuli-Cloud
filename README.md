@@ -121,8 +121,8 @@
 
 ```json
 {
-	"error":false,
-	"message":"Foto profil berhasil diubah"
+    "error":false,
+    "message":"Foto profil berhasil diubah"
 }
 ```
 
@@ -167,7 +167,7 @@
             "lessonNumber": "integer",
             "lessonType": "string"
         },
-				...
+	...
     ]
 }
 ```
@@ -204,7 +204,7 @@
             "lessonNumber": "integer",
             "lessonType": "string"
         },
-				...
+	...
     ]
 }
 ```
@@ -274,7 +274,7 @@
             "quizDifficulty": "string",
             "quizNumber": "integer"
         },
-				...
+	...
     ]
 }
 ```
@@ -309,7 +309,7 @@
             "quizDifficulty": "string",
             "quizNumber": "integer"
         },
-				...
+	...
     ]
 }
 ```
