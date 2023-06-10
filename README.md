@@ -144,7 +144,6 @@
             "createdAt": "date",
             "_id": "ObjectID",
             "lessonName": "string",
-            "description": "string",
             "imageUrl": "string",
             "lessonNumber": "integer",
             "lessonType": "string"
@@ -153,7 +152,6 @@
             "createdAt": "date",
             "_id": "ObjectID",
             "lessonName": "string",
-            "description": "string",
             "imageUrl": "string",
             "lessonNumber": "integer",
             "lessonType": "string"
@@ -162,7 +160,6 @@
             "createdAt": "date",
             "_id": "ObjectID",
             "lessonName": "string",
-            "description": "string",
             "imageUrl": "string",
             "lessonNumber": "integer",
             "lessonType": "string"
@@ -190,7 +187,6 @@
             "createdAt": "date",
             "_id": "ObjectID",
             "lessonName": "string",
-            "description": "string",
             "imageUrl": "string",
             "lessonNumber": "integer",
             "lessonType": "string"
@@ -199,7 +195,6 @@
             "createdAt": "date",
             "_id": "ObjectID",
             "lessonName": "string",
-            "description": "string",
             "imageUrl": "string",
             "lessonNumber": "integer",
             "lessonType": "string"
@@ -227,7 +222,6 @@
             "createdAt": "date",
             "_id": "ObjectID",
             "lessonName": "string",
-            "description": "string",
             "imageUrl": "string",
             "lessonNumber": "integer",
             "lessonType": "string"
@@ -257,8 +251,8 @@
             "quiz": "string",
             "quizDifficulty": "string",
             "quizNumber": "integer",
-						"languageType": "string",
-						"subQuiz": "integer"
+            "languageType": "string",
+	    "subQuiz": "integer"
         },
         {
             "createdAt": "date",
@@ -267,8 +261,8 @@
             "quiz": "string",
             "quizDifficulty": "string",
             "quizNumber": "integer"
-						"languageType": "string",
-						"subQuiz": "integer"
+	    "languageType": "string",
+	    "subQuiz": "integer"
         },
         {
             "createdAt": "date",
@@ -277,10 +271,10 @@
             "quiz": "string",
             "quizDifficulty": "string",
             "quizNumber": "integer"
-						"languageType": "string",
-						"subQuiz": "integer"
+	    "languageType": "string",
+	    "subQuiz": "integer"
         },
-				...
+	...
     ]
 }
 ```
@@ -306,8 +300,8 @@
             "quiz": "string",
             "quizDifficulty": "string",
             "quizNumber": "integer"
-						"languageType": "string",
-						"subQuiz": "integer"
+	    "languageType": "string",
+	    "subQuiz": "integer"
         },
         {
             "createdAt": "date",
@@ -316,10 +310,10 @@
             "quiz": "string",
             "quizDifficulty": "string",
             "quizNumber": "integer"
-						"languageType": "string",
-						"subQuiz": "integer"
+	    "languageType": "string",
+	    "subQuiz": "integer"
         },
-				...
+	...
     ]
 }
 ```
@@ -345,8 +339,8 @@
             "quiz": "string",
             "quizDifficulty": "string",
             "quizNumber": "integer"
-						"languageType": "string",
-						"subQuiz": "integer"
+	    "languageType": "string",
+	    "subQuiz": "integer"
         },
         {
             "createdAt": "date",
@@ -355,10 +349,10 @@
             "quiz": "string",
             "quizDifficulty": "string",
             "quizNumber": "integer"
-						"languageType": "string",
-						"subQuiz": "integer"
+	    "languageType": "string",
+	    "subQuiz": "integer"
         },
-				...
+	...
     ]
 }
 ```
@@ -384,8 +378,8 @@
             "quiz": "string",
             "quizDifficulty": "string",
             "quizNumber": "integer"
-						"languageType": "string",
-						"subQuiz": "integer"
+	    "languageType": "string",
+	    "subQuiz": "integer"
         }
     ]
 }
