@@ -12,6 +12,11 @@ const quizSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
+  
+  subQuiz: {
+    type: Number,
+    required: true,
+  },
 
   quizDifficulty: {
     type: String,

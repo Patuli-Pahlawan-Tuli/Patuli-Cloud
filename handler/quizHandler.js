@@ -35,12 +35,12 @@ const getQuizByDifficulty = async (req, res) => {
   }
 };
 
-const getQuizByNumber = async (req, res) => {
+const getQuizBySubQuiz = async (req, res) => {
   let response = null;
   const diffParams = req.params.quizDifficulty;
-  const numberParams = req.params.quizNumber;
+  const subQuizParams = req.params.subQuiz;
   try {
-    const quizzes = await Quiz.find({'quizNumber': numberParams , 'quizDifficulty': diffParams});
+    const quizzes = await Quiz.find({ 'quizDifficulty': diffParams , 'subQuiz': subQuizParams });
 
     if(quizzes.length === 0) {
       response = new Response.Error(true, 'Quiz tidak ketemu');
@@ -56,4 +56,26 @@ const getQuizByNumber = async (req, res) => {
   }
 };
 
-module.exports = { getAllQuiz, getQuizByDifficulty, getQuizByNumber };
+const getQuizByNumber = async (req, res) => {
+  let response = null;
+  const diffParams = req.params.quizDifficulty;
+  const subQuizParams = req.params.subQuiz;
+  const numberParams = req.params.quizNumber;
+  try {
+    const quizzes = await Quiz.find({'quizNumber': numberParams , 'quizDifficulty': diffParams, 'subQuiz': subQuizParams});
+
+    if(quizzes.length === 0) {
+      response = new Response.Error(true, 'Quiz tidak ketemu');
+      res.status(httpStatus.BAD_REQUEST).json(response);
+      return;
+    }
+
+    response = new Response.Success(false, 'success', quizzes);
+    res.status(httpStatus.OK).json(response); 
+  } catch (error) {
+    response = new Response.Error(true, error.message);
+    res.status(httpStatus.BAD_REQUEST).json(response);
+  }
+};
+
+module.exports = { getAllQuiz, getQuizByDifficulty, getQuizByNumber, getQuizBySubQuiz };

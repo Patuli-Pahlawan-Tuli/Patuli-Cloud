@@ -7,6 +7,7 @@ const quizHandler = require('../handler/quizHandler');
 router.use(Auth);
 router.get('/', quizHandler.getAllQuiz);
 router.get('/:quizDifficulty', quizHandler.getQuizByDifficulty);
-router.get('/:quizDifficulty/:quizNumber', quizHandler.getQuizByNumber);
+router.get('/:quizDifficulty/:subQuiz', quizHandler.getQuizBySubQuiz);
+router.get('/:quizDifficulty/:subQuiz/:quizNumber', quizHandler.getQuizByNumber);
 
 module.exports = router;

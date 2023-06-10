@@ -113,4 +113,32 @@ const updateCompletedQuizExpert = async (req, res) => {
   }
 };
 
-module.exports = { updateExp, updateLevel, updateCompletedQuizBeginner, updateCompletedQuizIntermediate, updateCompletedQuizExpert };
+const updateCompletedSubQuiz = async (req, res) => {
+  let response = null;
+
+  try {
+    const accountId = req.currentUser._id;
+    const accountCompletedSubQuiz = req.currentUser.completedSubQuiz;
+    const request = req.body;
+    let bodycompletedQuiz = request.newQuestComplete;
+    let bodySubQuiz = request.subQuiz;
+
+    if (accountCompletedSubQuiz != bodySubQuiz){
+      if(accountCompletedSubQuiz <= bodySubQuiz){
+        await Account.findByIdAndUpdate(accountId, { $inc:{ completedSubQuiz: bodycompletedQuiz} });
+        response = new Response.Success(false, 'Completed quiz berhasil diperbarui');
+        return res.status(httpStatus.OK).json(response);
+      }
+      if(accountCompletedSubQuiz > bodySubQuiz){
+        throw new Error('Anda sudah melewati subquest ini');
+      }
+    }
+    throw new Error('Anda sudah melewati subquest ini');
+
+  } catch (error) {
+    response = new Response.Error(true, error.message);
+    return res.status(httpStatus.BAD_REQUEST).json(response);
+  }
+};
+
+module.exports = { updateExp, updateLevel, updateCompletedQuizBeginner, updateCompletedQuizIntermediate, updateCompletedQuizExpert, updateCompletedSubQuiz };
