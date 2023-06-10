@@ -6,7 +6,6 @@ const levelHandler = require('../handler/levelHandler');
 
 router.use(Auth);
 router.put('/edit-exp', levelHandler.updateExp);
-router.put('/edit-level', levelHandler.updateLevel);
 router.put('/edit-completed-sub-quiz', levelHandler.updateCompletedSubQuiz);
 
 module.exports = router;

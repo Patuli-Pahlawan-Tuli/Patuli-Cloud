@@ -404,23 +404,6 @@
 }
 ```
 
-## Edit Level Account
-
-- Method: PUT
-- Path URL: /api/v1/level/edit-level
-- Header: -
-- Body:
-    - newLvl: number(increment)
-- Authorization: Bearer Token
-- Response (example):
-
-```json
-{
-    "error": false,
-    "message": "Level berhasil diperbarui"
-}
-```
-
 ## Edit Completed Sub Quiz
 
 - Method: PUT

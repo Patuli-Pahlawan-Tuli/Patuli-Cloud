@@ -8,29 +8,22 @@ const updateExp = async (req, res) => {
   try {
     const accountId = req.currentUser._id;
     const request = req.body;
-    const bodyAccountExp = request.newExp;
+    const bodyAccountExp = parseInt(request.newExp);
+    const levelIncrement = 100;
 
-    await Account.findByIdAndUpdate(accountId, { $inc:{ accountExp: bodyAccountExp } });
+    const account = await Account.findById(accountId);
+    const currentExp = account.accountExp;
+    const currentLvl = account.accountLevel;
+    const newExp = currentExp + bodyAccountExp;
+    const level = Math.floor(newExp / levelIncrement) + 1;
+
+    await Account.findByIdAndUpdate(accountId, { accountExp: newExp});
+    
+    if(currentLvl != level){
+      await Account.findByIdAndUpdate(accountId, { $inc:{ accountLevel: 1 } });
+    }
 
     response = new Response.Success(false, 'Exp berhasil diperbarui');
-    res.status(httpStatus.OK).json(response);
-  } catch (error) {
-    response = new Response.Error(true, error.message);
-    res.status(httpStatus.BAD_REQUEST).json(response);
-  }
-};
-
-const updateLevel = async (req, res) => {
-  let response = null;
-
-  try {
-    const accountId = req.currentUser._id;
-    const request = req.body;
-    const bodyAccountLvl = request.newLvl;
-
-    await Account.findByIdAndUpdate(accountId, { $inc:{ accountLevel: bodyAccountLvl } });
-
-    response = new Response.Success(false, 'Level berhasil diperbarui');
     res.status(httpStatus.OK).json(response);
   } catch (error) {
     response = new Response.Error(true, error.message);
@@ -74,4 +67,4 @@ const updateCompletedSubQuiz = async (req, res) => {
   }
 };
 
-module.exports = { updateExp, updateLevel, updateCompletedSubQuiz };
+module.exports = { updateExp, updateCompletedSubQuiz };

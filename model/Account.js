@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 
 const dateTime = new Date();
 let levelAccount = 1;
-let expAccount = 1;
+let expAccount = 0;
 let quizComplete = 0;
 let subQuizComplete = 0;
 
