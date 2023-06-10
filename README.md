@@ -439,57 +439,6 @@
 }
 ```
 
-## Edit Completed Quiz Beginner Account
-
-- Method: PUT
-- Path URL: /api/v1/level/edit-completed-quiz-beginner
-- Header: -
-- Body:
-    - newQuestComplete: number
-- Authorization: Bearer Token
-- Response (example):
-
-```json
-{
-    "error": false,
-    "message": "Completed quiz berhasil diperbarui"
-}
-```
-
-## Edit Completed Quiz Intermediate Account
-
-- Method: PUT
-- Path URL: /api/v1/level/edit-completed-quiz-intermediate
-- Header: -
-- Body:
-    - newQuestComplete: number
-- Authorization: Bearer Token
-- Response (example):
-
-```json
-{
-    "error": false,
-    "message": "Completed quiz berhasil diperbarui"
-}
-```
-
-## Edit Completed Quiz Expert Account
-
-- Method: PUT
-- Path URL: /api/v1/level/edit-completed-quiz-expert
-- Header: -
-- Body:
-    - newQuestComplete: number
-- Authorization: Bearer Token
-- Response (example):
-
-```json
-{
-    "error": false,
-    "message": "Completed quiz berhasil diperbarui"
-}
-```
-
 ## Get Hash
 
 - Method: GET
