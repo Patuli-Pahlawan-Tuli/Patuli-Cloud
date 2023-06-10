@@ -31,6 +31,7 @@
         "password": "string",
         "accountLevel": "integer",
         "accountExp": "integer",
+	"completedSubQuiz": "integer",
         "completedQuiz": "integer",
         "createdAt": "date",
         "_id": "ObjectID",
@@ -86,6 +87,7 @@
         "createdAt": "date",
         "imageUrl": "string",
         "__v": "integer"
+	"completedSubQuiz": "integer",
     }
 }
 ```
