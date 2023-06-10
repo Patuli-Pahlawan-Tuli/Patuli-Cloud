@@ -31,6 +31,7 @@
         "password": "string",
         "accountLevel": "integer",
         "accountExp": "integer",
+	"completedSubQuiz": "integer",
         "completedQuiz": "integer",
         "createdAt": "date",
         "_id": "ObjectID",
@@ -86,6 +87,7 @@
         "createdAt": "date",
         "imageUrl": "string",
         "__v": "integer"
+	"completedSubQuiz": "integer",
     }
 }
 ```
@@ -144,7 +146,6 @@
             "createdAt": "date",
             "_id": "ObjectID",
             "lessonName": "string",
-            "description": "string",
             "imageUrl": "string",
             "lessonNumber": "integer",
             "lessonType": "string"
@@ -153,7 +154,6 @@
             "createdAt": "date",
             "_id": "ObjectID",
             "lessonName": "string",
-            "description": "string",
             "imageUrl": "string",
             "lessonNumber": "integer",
             "lessonType": "string"
@@ -162,7 +162,6 @@
             "createdAt": "date",
             "_id": "ObjectID",
             "lessonName": "string",
-            "description": "string",
             "imageUrl": "string",
             "lessonNumber": "integer",
             "lessonType": "string"
@@ -190,7 +189,6 @@
             "createdAt": "date",
             "_id": "ObjectID",
             "lessonName": "string",
-            "description": "string",
             "imageUrl": "string",
             "lessonNumber": "integer",
             "lessonType": "string"
@@ -199,7 +197,6 @@
             "createdAt": "date",
             "_id": "ObjectID",
             "lessonName": "string",
-            "description": "string",
             "imageUrl": "string",
             "lessonNumber": "integer",
             "lessonType": "string"
@@ -227,7 +224,6 @@
             "createdAt": "date",
             "_id": "ObjectID",
             "lessonName": "string",
-            "description": "string",
             "imageUrl": "string",
             "lessonNumber": "integer",
             "lessonType": "string"
@@ -256,7 +252,9 @@
             "answer": "string",
             "quiz": "string",
             "quizDifficulty": "string",
-            "quizNumber": "integer"
+            "quizNumber": "integer",
+            "languageType": "string",
+	    "subQuiz": "integer"
         },
         {
             "createdAt": "date",
@@ -265,6 +263,8 @@
             "quiz": "string",
             "quizDifficulty": "string",
             "quizNumber": "integer"
+	    "languageType": "string",
+	    "subQuiz": "integer"
         },
         {
             "createdAt": "date",
@@ -273,6 +273,8 @@
             "quiz": "string",
             "quizDifficulty": "string",
             "quizNumber": "integer"
+	    "languageType": "string",
+	    "subQuiz": "integer"
         },
 	...
     ]
@@ -300,6 +302,8 @@
             "quiz": "string",
             "quizDifficulty": "string",
             "quizNumber": "integer"
+	    "languageType": "string",
+	    "subQuiz": "integer"
         },
         {
             "createdAt": "date",
@@ -308,16 +312,18 @@
             "quiz": "string",
             "quizDifficulty": "string",
             "quizNumber": "integer"
+	    "languageType": "string",
+	    "subQuiz": "integer"
         },
 	...
     ]
 }
 ```
 
-## Get Quiz by Quiz Number
+## Get Quiz by Sub Quiz
 
 - Method: GET
-- Path URL: /api/v1/quizzes/:quizDifficulty/:quizNumber
+- Path URL: /api/v1/quizzes/:quizDifficulty/:subQuiz
 - Header: -
 - Body: -
 - Authorization: Bearer Token
@@ -335,6 +341,47 @@
             "quiz": "string",
             "quizDifficulty": "string",
             "quizNumber": "integer"
+	    "languageType": "string",
+	    "subQuiz": "integer"
+        },
+        {
+            "createdAt": "date",
+            "_id": "ObjectId",
+            "answer": "string",
+            "quiz": "string",
+            "quizDifficulty": "string",
+            "quizNumber": "integer"
+	    "languageType": "string",
+	    "subQuiz": "integer"
+        },
+	...
+    ]
+}
+```
+
+## Get Quiz by Quiz Number
+
+- Method: GET
+- Path URL: /api/v1/quizzes/:quizDifficulty/:subQuiz/:quizNumber
+- Header: -
+- Body: -
+- Authorization: Bearer Token
+- Response (example):
+
+```json
+{
+    "error": false,
+    "message": "success",
+    "data": [
+        {
+            "createdAt": "date",
+            "_id": "ObjectId",
+            "answer": "string",
+            "quiz": "string",
+            "quizDifficulty": "string",
+            "quizNumber": "integer"
+	    "languageType": "string",
+	    "subQuiz": "integer"
         }
     ]
 }
@@ -371,6 +418,24 @@
 {
     "error": false,
     "message": "Level berhasil diperbarui"
+}
+```
+
+## Edit Completed Sub Quiz
+
+- Method: PUT
+- Path URL: /api/v1/level/edit-completed-sub-quiz
+- Header: -
+- Body:
+    - newQuestComplete: number
+    - subQuiz: number
+- Authorization: Bearer Token
+- Response (example):
+
+```json
+{
+    "error": false,
+    "message": "Completed quiz berhasil diperbarui"
 }
 ```
 
