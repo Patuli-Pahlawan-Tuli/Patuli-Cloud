@@ -43,7 +43,6 @@ const updateCompletedSubQuiz = async (req, res) => {
 
   try {
     const accountId = req.currentUser._id;
-    const accountCompletedQuiz = req.currentUser.completedQuiz;
     const accountCompletedSubQuiz = req.currentUser.completedSubQuiz;
     const request = req.body;
     let bodycompletedQuiz = request.newQuestComplete;
