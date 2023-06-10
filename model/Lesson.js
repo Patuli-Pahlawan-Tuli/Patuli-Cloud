@@ -18,11 +18,6 @@ const lessonSchema = new mongoose.Schema({
     required: true,
   },
 
-  description: {
-    type: String,
-    required: true,
-  },
-
   imageUrl: {
     type: String,
     required: true,
